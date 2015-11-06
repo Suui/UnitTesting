@@ -20,12 +20,19 @@ class TestRepository
 	TestRepository(TestRepository const&) = delete;
 	void operator=(TestRepository const&) = delete;
 
+	std::vector<TestClass> testClassRepo;
+
 public:
 
 	static TestRepository& getInstance()
 	{
 		static TestRepository instance;
 		return instance;
+	}
+
+	void registerTestClass(TestClass& testClass)
+	{
+		testClassRepo.push_back(testClass);
 	}
 };
 
@@ -38,7 +45,7 @@ namespace Namespace
 		TestRegistrator(TestFunction testFunction);
 		TestRegistrator(TestClass& testClass)
 		{
-			
+			TestRepository::getInstance().registerTestClass(testClass);
 		}
 	};
 }
