@@ -35,6 +35,11 @@ namespace Namespace
 	struct TestRegistrator
 	{
 		TestRegistrator();
+		TestRegistrator(TestFunction testFunction);
+		TestRegistrator(TestClass& testClass)
+		{
+			
+		}
 	};
 }
 
@@ -44,7 +49,7 @@ class ClassName : public TestClass \
 public: \
 	void testFunction() override; \
 }; \
-namespace { Namespace::TestRegistrator registrator(); } \
+namespace { Namespace::TestRegistrator registrator(ClassName testClass()); } \
 void ClassName::testFunction()
 
 
