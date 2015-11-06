@@ -34,6 +34,11 @@ public:
 	{
 		testClassRepo.push_back(testClass);
 	}
+
+	void runTests()
+	{
+		testClassRepo[0].testFunction();
+	}
 };
 
 
