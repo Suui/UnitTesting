@@ -86,7 +86,7 @@
     <ClInclude Include="TestRunner\catch.hpp" />
     <ClInclude Include="TestRunner\hippomocks.h" />
     <ClInclude Include="TestRunner\TestRunner.hpp" />
-    <ClInclude Include="UnitTest.h" />
+    <ClInclude Include="UnitTest.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

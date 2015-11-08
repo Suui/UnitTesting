@@ -61,7 +61,7 @@ class ClassName : public TestClass \
 public: \
 	void testFunction() override; \
 }; \
-namespace { Namespace::TestRegistrator registrator(ClassName testClass()); } \
+namespace { static Namespace::TestRegistrator registrator(ClassName testClass()); } \
 void ClassName::testFunction()
 
 
