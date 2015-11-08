@@ -1,23 +1,22 @@
 ﻿#include "UnitTest.hpp"
+#include <iostream>
 
-struct MyClasses
+
+void scopeTest()
 {
-	static std::vector<std::string> myclasses;
-	MyClasses(std::string name) { myclasses.push_back(name); }
-};
+	int a = 5;
+	std::cout << a << std::endl;
+	{
+		a = 10;
+		std::cout << a << std::endl;
+	}
+	std::cout << a << std::endl;
+}
 
-std::vector<std::string> MyClasses::myclasses;
-
-#define REGISTER_CLASS(cls) static MyClasses myclass_##cls(#cls);
-
-struct XYZ
-{
-};
-
-REGISTER_CLASS(XYZ);
 
 int main()
 {
+	scopeTest();
 	std::vector<std::string> local = MyClasses::myclasses;
-	TestRepository::getInstance().runTests();
+	//TestRepository::getInstance().runTests();
 }

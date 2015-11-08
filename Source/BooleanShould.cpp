@@ -10,6 +10,14 @@
 //}
 
 
+struct XYZ
+{
+};
+
+REGISTER_CLASS(XYZ);
+
+
+
 TEST_CLASS(BooleanShould)
 {
 	bool value = true;

@@ -85,4 +85,15 @@ class UnitTest
 public:
 
 	static void registerTest(TestFunction& testFunction) { testQueue.push(testFunction); }
-}; 
+};
+
+
+// Stackoverflow example
+struct MyClasses
+{
+	static std::vector<std::string> myclasses;
+	MyClasses(std::string name) { myclasses.push_back(name); }
+};
+
+
+#define REGISTER_CLASS(cls) static MyClasses myclass_##cls(#cls);
