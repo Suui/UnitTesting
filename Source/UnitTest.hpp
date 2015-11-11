@@ -95,5 +95,4 @@ struct MyClasses
 	MyClasses(std::string name) { myclasses.push_back(name); }
 };
 
-
 #define REGISTER_CLASS(cls) static MyClasses myclass_##cls(#cls);
