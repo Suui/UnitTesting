@@ -87,7 +87,6 @@ public:
 	TEST(be_true_when_true);
 
 	TEST(be_false_when_false);
-	
 };
 
 
@@ -104,12 +103,8 @@ IMPLEMENTATION(BooleanShould::be_false_when_false)
 }
 
 
-
 int main()
 {
-	TestClass testClass;
-	TestRegistrar registrar(testClass, "testClass");
-
 	for (auto it : TestRepository::testClasses)
 	{
 		std::cout << it.first << " says: ";
