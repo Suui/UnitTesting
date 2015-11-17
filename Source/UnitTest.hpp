@@ -96,3 +96,20 @@ struct MyClasses
 };
 
 #define REGISTER_CLASS(cls) static MyClasses myclass_##cls(#cls);
+
+
+//#define FRUCTOSE_STRUCT(_name_) struct _name_ : \
+//public fructose::test_base<_name_>
+//#define FRUCTOSE_CLASS(_name_) class _name_ : \
+//public fructose::test_base<_name_>
+//#define FRUCTOSE_TEST(_name_) void _name_( \
+//	const std::string &test_name)
+//
+//FRUCTOSE_CLASS(numeric_tests)
+//{
+//public:
+//	FRUCTOSE_TEST(test_factorial)
+//	{
+//		
+//	}
+//};
