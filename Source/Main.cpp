@@ -78,16 +78,28 @@ TestFunctionRegistrar registrar_BooleanShould_be_true_when_true(BooleanShould::b
 TestFunctionRegistrar registrar_BooleanShould_be_false_when_false(BooleanShould::be_false_when_false);	\
 void TestName()
 
+#define REGISTER(TestName)				\
+TestFunctionRegistrar registrar_BooleanShould_report_error_when_unmatched(BooleanShould::report_error_when_unmatched);	\
+void TestName()
+
 
 
 TEST_CLASS(BooleanShould)
 {
 public:
 
+	static void report_error_when_unmatched();
+
 	TEST(be_true_when_true);
 
 	TEST(be_false_when_false);
 };
+
+
+REGISTER(BooleanShould::report_error_when_unmatched)
+{
+	std::cout << "Report error when unmatched" << std::endl;
+}
 
 
 IMPLEMENT()
