@@ -78,17 +78,24 @@ TestFunctionRegistrar registrar_BooleanShould_be_true_when_true(BooleanShould::b
 TestFunctionRegistrar registrar_BooleanShould_be_false_when_false(BooleanShould::be_false_when_false);	\
 void TestName()
 
-#define REGISTER(TestName)				\
-TestFunctionRegistrar registrar_BooleanShould_report_error_when_unmatched(BooleanShould::report_error_when_unmatched);	\
-void TestName()
+#define NAME_AND_LINE_STRINGIFIED(name, line) name##line
+#define NAME_AND_LINE(name, line) NAME_AND_LINE_STRINGIFIED(name, line)
+#define GET_UNIQUE_NAME() NAME_AND_LINE(FluentUnrealUnit, __LINE__)
 
+//#define REGISTER(TestName)				\
+//TestFunctionRegistrar registrar_BooleanShould_report_error_when_unmatched(TestName);	\
+//void TestName()
+
+#define REGISTER(TestName)				\
+TestFunctionRegistrar GET_UNIQUE_NAME()(TestName);	\
+void TestName()
 
 
 TEST_CLASS(BooleanShould)
 {
 public:
 
-	static void report_error_when_unmatched();
+	TEST(report_error_when_unmatched);
 
 	TEST(be_true_when_true);
 
