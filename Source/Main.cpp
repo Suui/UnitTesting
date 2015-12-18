@@ -8,6 +8,10 @@ class TestClass
 {
 public:
 
+	virtual ~TestClass()
+	{
+	}
+
 	TestClass()
 	{
 		
@@ -17,6 +21,10 @@ public:
 	{
 		std::cout << "I've printed something" << std::endl;
 	}
+
+	virtual void RegisterTests() {}
+
+	virtual void ExecuteTests() {}
 };
 
 
@@ -28,13 +36,20 @@ public:
 	
 	static std::map<std::string, TestClass> testClasses;
 	
+	static std::vector<TestClass*> newTestClasses;
+	
 	static std::vector<TestFunction> testFunctions;
+
+	static std::vector<std::string> testClassNames;
 };
 
 std::map<std::string, TestClass> TestRepository::testClasses;
 
 std::vector<TestFunction> TestRepository::testFunctions;
 
+std::vector<TestClass*> TestRepository::newTestClasses;
+
+std::vector<std::string> TestRepository::testClassNames;
 
 
 class TestRegistrar
@@ -54,6 +69,16 @@ TestRegistrar registrar##ClassName(ClassName, #ClassName);
 REGISTER_TEST(TestShould);
 
 
+class TestClassRegistrar
+{
+public:
+
+	TestClassRegistrar(TestClass* testClass)
+	{
+		TestRepository::newTestClasses.push_back(testClass);
+	}
+};
+
 class TestFunctionRegistrar
 {
 public:
@@ -64,9 +89,25 @@ public:
 	}
 };
 
+class TestClassNamesRegistrar
+{
+public:
 
-#define TEST_CLASS(ClassName)	\
+	TestClassNamesRegistrar(std::string testClassName)
+	{
+		TestRepository::testClassNames.push_back(testClassName);
+	}
+};
+
+typedef TestClass* TestClassPointer;
+
+
+#define TEST_CLASS(ClassName)					\
+class ClassName;								\
+ClassName* fooBool;								\
+TestClassRegistrar fooRegistrar(fooBool);		\
 class ClassName : public TestClass
+
 
 #define TEST(TestName)				\
 static void TestName()				\
@@ -90,16 +131,50 @@ void TestName()
 TestFunctionRegistrar GET_UNIQUE_NAME()(TestName);	\
 void TestName()
 
+#define Test(TestName)	\
+void TestName()
+
+
+#define AssertThat(parameter) \
+
 
 TEST_CLASS(BooleanShould)
 {
 public:
+
+	typedef void(BooleanShould::*MemberFunction)();
+	std::vector<MemberFunction> memberFunctions;
 
 	TEST(report_error_when_unmatched);
 
 	TEST(be_true_when_true);
 
 	TEST(be_false_when_false);
+
+	Test(test_function)
+	{
+		std::cout << "I've been called as a member function pointer" << std::endl;
+	}
+
+	void random_test()
+	{
+		auto number = 5;
+
+		AssertThat(number).Is(5);
+	}
+
+	void RegisterTests() override
+	{
+		memberFunctions.push_back(&BooleanShould::test_function);
+	}
+
+	void ExecuteTests() override
+	{
+		for (auto function : memberFunctions)
+		{
+			(this->*function)();
+		}
+	}
 };
 
 
@@ -133,5 +208,13 @@ int main()
 	for (auto it : TestRepository::testFunctions)
 	{
 		it();
+	}
+
+	BooleanShould* ptr;
+	ptr = new BooleanShould();
+
+	for (auto testClass : TestRepository::newTestClasses)
+	{
+		testClass->printSomething();
 	}
 }
