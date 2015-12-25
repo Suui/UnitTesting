@@ -1,0 +1,9 @@
+FunctionName									File													Line(s)			Remarks
+
+ExportClass		  								IScriptGeneratorPluginInterface.h 						85
+
+												UnrealTypeDefinitionInfo.h								1-40			Important. Class that stores information about type (USTRUCT/UCLASS) definition.
+
+												UnrealSourceFile.h										1-324			REALLY IMPORTANT. Contains information about source file that defines various UHT aware types.
+
+												SimplifiedParsingClassInfo.h							1-65			Important. Simplified parsing information about UClasses. Contains name of the class + others.
