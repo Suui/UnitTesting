@@ -1,9 +1,27 @@
-FunctionName									File													Line(s)			Remarks
+Name											File													Line(s)			Remarks
 
 ExportClass		  								IScriptGeneratorPluginInterface.h 						85
 
-												UnrealTypeDefinitionInfo.h								1-40			Important. Class that stores information about type (USTRUCT/UCLASS) definition.
+												UnrealTypeDefinitionInfo.h								all			Important. Class that stores information about type (USTRUCT/UCLASS) definition.
 
-												UnrealSourceFile.h										1-324			REALLY IMPORTANT. Contains information about source file that defines various UHT aware types.
+												UnrealSourceFile.h										all			REALLY IMPORTANT. Contains information about source file that defines various UHT
+																														aware types.
 
-												SimplifiedParsingClassInfo.h							1-65			Important. Simplified parsing information about UClasses. Contains name of the class + others.
+												SimplifiedParsingClassInfo.h							all			Important. Simplified parsing information about UClasses. Contains name of the class
+																														+ others.
+
+												Scope.h & cpp											all			REALLY IMPORTANT. Contains and manages scopes for files, clases.
+
+												ParserHelper.h & cpp									all			PRETTY IMPORTANT. Has to deal with type getting and setting.
+
+CASE_TEXT(txt)									ParserHelper.h 											62			Maybe Useful. #define CASE_TEXT(txt) case txt: return TEXT(#txt)
+
+FFuncInfo										ParserHelper.h 											862			REALLY IMPORTANT. Stores info for functions and a pointer to a UFunction member.
+
+FFunctionData									ParserHelper.h 											1166		REALLY IMPORTANT. AddParameter and SetReturnData. TMap<UFunction*, TSharedRef<FFunctionData>>.
+
+FClassMetaData									ParserHelper.h 											1348		Important. Contains lines of UCLASS or GENERATED_BODY.
+
+
+
+@TODO: ParserClass.h
