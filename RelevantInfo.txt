@@ -22,6 +22,28 @@ FFunctionData									ParserHelper.h 											1166		REALLY IMPORTANT. AddParam
 
 FClassMetaData									ParserHelper.h 											1348		Important. Contains lines of UCLASS or GENERATED_BODY.
 
+FNativeClassHeaderGenerator						NativeClassExporter.h 									all			Maybe Useful. Struct interface containing properties and functions for exporting files, is
+																														related to the geneated headers.
+
+FManifestModule									Manifest.h 												all			Maybe Useful. Related to reading and writing the manifest files for game modules. There is
+																														also the FManifest.
+
+FHeaderParser									HeaderParser.h 											all			REALLY IMPORTANT. Functions for parsing headers.
+
+FHeaderParser									HeaderParser.h 											170			REALLY IMPORTANT. SimplifiedClassParse(...) performs a preliminary parse of the text in the
+																														specified buffer pulling out the class and parent class name plus others.
+
+FHeaderParser									HeaderParser.h 											307			REALLY IMPORTANT. GetCurrentClassData() gets current class' metadata.
+
+FHeaderParser									HeaderParser.h 											361			REALLY IMPORTANT. Property boolean flags related to whether UCLASS, GENERATED_UCLASS and
+																														such style macros have been found in a UClass.
+
+FHeaderParser									HeaderParser.h 											430			REALLY IMPORTANT. ParseRestOfModulesSourceFiles(...) Parse the rest of a module¡s source files.
+
+FHeaderParser									HeaderParser.h 											439			Curious. FormatCommentForTooltip(...).
+
+FHeaderParser									Headerparser.h 											505			REALLY IMPORTANT. CreateFunction(...) followed by a bunch of Compiling functions.
 
 
-@TODO: ParserClass.h
+												UObjectHash.cpp											318			REALLY IMPORTANT. GetObjectHash(...) global function, calculates the object's hash just using
+																													the object's name index
