@@ -47,3 +47,12 @@ FHeaderParser									Headerparser.h 											505			REALLY IMPORTANT. CreateFu
 
 												UObjectHash.cpp											318			REALLY IMPORTANT. GetObjectHash(...) global function, calculates the object's hash just using
 																													the object's name index
+
+
+
+
+=== DEBUG INFO === Important Breakpoints in order of execution ===
+
+UnrealHeaderToolMain.cpp @ 83				// Entry point
+CodeGenerator.cpp @ 5728 GManifest			// Deserialization from the JSON formatted manifest file
+CodeGeberator.cpp @ 5748 UHTMakefile		
