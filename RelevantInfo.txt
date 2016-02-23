@@ -55,4 +55,6 @@ FHeaderParser									Headerparser.h 											505			REALLY IMPORTANT. CreateFu
 
 UnrealHeaderToolMain.cpp @ 83				// Entry point
 CodeGenerator.cpp @ 5728 GManifest			// Deserialization from the JSON formatted manifest file
-CodeGeberator.cpp @ 5748 UHTMakefile		
+CodeGenerator.cpp @ 5748 UHTMakefile		
+CodeGenerator.cpp @ 5763 PreparseModules	
+UnrealNames.cpp @ 468 InitInternal
