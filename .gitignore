@@ -2,7 +2,7 @@
 *.user
 *.sdf
 *.opensdf
+*.opendb
 
+.vs
 Debug
-Source/Debug
-Test/Debug
