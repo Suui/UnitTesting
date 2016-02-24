@@ -48,6 +48,10 @@ FHeaderParser									Headerparser.h 											505			REALLY IMPORTANT. CreateFu
 												UObjectHash.cpp											318			REALLY IMPORTANT. GetObjectHash(...) global function, calculates the object's hash just using
 																													the object's name index
 
+FHeaderParser									HeaderParser.cpp										7204		SUPERR IMPORTANT. SimplifiedClassParse(...) Implementation that is called on the
+																														PerformInitialParseOnHeader() function with clear methods called
+
+FHeaderParser									HeaderParser.cpp										7521		SUPERR IMPORTANT. ParseClassDeclaration(...) Speaks for itself!
 
 
 
@@ -58,3 +62,18 @@ CodeGenerator.cpp @ 5728 GManifest			// Deserialization from the JSON formatted 
 CodeGenerator.cpp @ 5748 UHTMakefile		
 CodeGenerator.cpp @ 5763 PreparseModules	
 UnrealNames.cpp @ 468 InitInternal
+CodeGenerator.cpp @ 5587 LoadFileToString
+CodeGenerator.cpp @ 5592 PerformInitialParseOnHeader
+HeaderParser.cpp @ 7373 CurrentLine == 1028		// For the Object.h file will find the UCLASS macro at line 1029
+HeaderParser.cpp @ 7509 ParseClassDeclaration	// Found a UCLASS macro
+
+CodeGenerator.cpp @5958 FindObject
+
+
+
+=== NOTES ===
+
+Parsing a Class Declaration (ParseClassDeclaration()):
+	Requires the UCLASS or UINTERFACE identifier
+	Reads the specifiers for the UCLASS and gets them into a TArray<FPropertySpecifier> SpecifiersFound
+	MAGIC at CodeGenerator.cpp @ 5958 FindObject
